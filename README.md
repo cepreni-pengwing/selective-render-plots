@@ -104,4 +104,7 @@ The installable JAR is generated in `build/libs`.
 
 ## License
 
-GPL-3.0. See `LICENSE`.
+MIT. See `LICENSE`.
+
+PlotSquared is a separate GPL-3.0 runtime dependency and is not included in the
+Selective Render Plots JAR. See `THIRD_PARTY_NOTICES.md` for dependency notices.
