@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "selective-render-plots",
+  "version": "${version}",
+  "name": "Selective Render Plots",
+  "description": "Sends exact PlotSquared regions to Selective Render clients.",
+  "authors": ["cepreni-pengwing"],
+  "license": "MIT",
+  "environment": "server",
+  "entrypoints": {
+    "main": ["de.selectiverender.plots.fabric.SelectiveRenderPlotsFabricMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "fabric-api": "*",
+    "minecraft": "1.20.1",
+    "plotsquared-fabric": "*"
+  }
+}

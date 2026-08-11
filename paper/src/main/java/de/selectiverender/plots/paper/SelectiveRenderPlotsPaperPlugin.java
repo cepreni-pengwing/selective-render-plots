@@ -1,26 +1,25 @@
-package de.selectiverender.plots;
+package de.selectiverender.plots.paper;
 
 import com.plotsquared.bukkit.util.BukkitUtil;
 import com.plotsquared.core.plot.Plot;
-import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.CuboidRegion;
+import de.selectiverender.plots.PlotProtocol;
+import de.selectiverender.plots.PlotProtocol.PlotRegion;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 
-public final class SelectiveRenderPlotsPlugin extends JavaPlugin implements PluginMessageListener {
+public final class SelectiveRenderPlotsPaperPlugin extends JavaPlugin implements PluginMessageListener {
     @Override
     public void onEnable() {
         getServer().getMessenger().registerIncomingPluginChannel(this, PlotProtocol.REQUEST_CHANNEL, this);
         getServer().getMessenger().registerOutgoingPluginChannel(this, PlotProtocol.RESPONSE_CHANNEL);
-        getLogger().info("Selective Render Plots bridge protocol v" + PlotProtocol.VERSION + " enabled");
+        getLogger().info("Selective Render Plots Paper bridge protocol v" + PlotProtocol.VERSION + " enabled");
     }
 
     @Override
@@ -56,10 +55,13 @@ public final class SelectiveRenderPlotsPlugin extends JavaPlugin implements Plug
                 send(player, request.id(), PlotProtocol.STATUS_NO_PLOT, "", List.of(), null, null);
                 return;
             }
-            List<CuboidRegion> regions = plot.getRegions().stream()
+            List<PlotRegion> regions = plot.getRegions().stream()
                     .sorted(Comparator.comparingInt((CuboidRegion region) -> region.getMinimumPoint().getX())
                             .thenComparingInt(region -> region.getMinimumPoint().getZ())
                             .thenComparingInt(region -> region.getMinimumPoint().getY()))
+                    .map(region -> new PlotRegion(region.getMinimumPoint().getX(), region.getMaximumPoint().getX(),
+                            region.getMinimumPoint().getY(), region.getMaximumPoint().getY(),
+                            region.getMinimumPoint().getZ(), region.getMaximumPoint().getZ()))
                     .toList();
             if (regions.isEmpty() || regions.size() > PlotProtocol.MAX_REGIONS) {
                 throw new IOException("Plot returned an invalid region count: " + regions.size());
@@ -74,29 +76,11 @@ public final class SelectiveRenderPlotsPlugin extends JavaPlugin implements Plug
         }
     }
 
-    private void send(Player player, long requestId, int status, String name,
-                      List<CuboidRegion> regions, Integer requestedMinY, Integer requestedMaxY) {
+    private void send(Player player, long requestId, int status, String name, List<PlotRegion> regions,
+                      Integer requestedMinY, Integer requestedMaxY) {
         try {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            try (DataOutputStream output = new DataOutputStream(bytes)) {
-                output.writeInt(PlotProtocol.MAGIC);
-                output.writeInt(PlotProtocol.VERSION);
-                output.writeLong(requestId);
-                output.writeByte(status);
-                PlotProtocol.writeString(output, name);
-                output.writeInt(regions.size());
-                for (CuboidRegion region : regions) {
-                    BlockVector3 min = region.getMinimumPoint();
-                    BlockVector3 max = region.getMaximumPoint();
-                    output.writeInt(min.getX());
-                    output.writeInt(max.getX());
-                    output.writeInt(requestedMinY == null ? min.getY() : requestedMinY);
-                    output.writeInt(requestedMaxY == null ? max.getY() : requestedMaxY);
-                    output.writeInt(min.getZ());
-                    output.writeInt(max.getZ());
-                }
-            }
-            player.sendPluginMessage(this, PlotProtocol.RESPONSE_CHANNEL, bytes.toByteArray());
+            byte[] payload = PlotProtocol.writeResponse(requestId, status, name, regions, requestedMinY, requestedMaxY);
+            player.sendPluginMessage(this, PlotProtocol.RESPONSE_CHANNEL, payload);
         } catch (IOException exception) {
             getLogger().severe("Could not encode plot response for " + player.getName() + ": " + exception.getMessage());
         }
