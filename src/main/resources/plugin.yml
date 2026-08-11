@@ -5,12 +5,7 @@ api-version: '1.20'
 depend: [PlotSquared]
 authors: [cepreni-pengwing]
 description: Sends exact PlotSquared regions to Selective Render clients.
-commands:
-  selectiverenderplot:
-    aliases: [srp]
-    description: Toggles the current plot or saves its exact shape as a Selective Render preset.
-    usage: /selectiverenderplot or /selectiverenderplot save <name> <minY> <maxY>
 permissions:
   selectiverender.plot.solo:
-    description: Allows using Selective Render Plots commands.
+    description: Allows using Selective Render plot integration.
     default: true

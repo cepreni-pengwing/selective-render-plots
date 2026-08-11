@@ -10,20 +10,20 @@ the connecting client; no Fabric mod is required on the server.
 
 ## Usage
 
-`/srp` is the short alias for `/selectiverenderplot`; both command names provide
-the same features.
+The commands are added to Selective Render's existing client-side command tree.
+`/sr` is the short alias for `/selectiverender`, `p` for `plot`, and `s` for `save`.
 
 Available commands:
 
 ```text
-/srp
-/srp save NAME minY maxY
-/srp s NAME minY maxY
+/sr plot
+/sr plot save NAME minY maxY
+/sr p s NAME minY maxY
 ```
 
-- `/srp` toggles temporary isolation of the PlotSquared plot under the player.
+- `/sr plot` toggles temporary isolation of the PlotSquared plot under the player.
   Running it again disables plot mode and returns to the regular Selective Render state.
-- `/srp save NAME minY maxY` permanently saves the exact plot shape as one normal
+- `/sr plot save NAME minY maxY` permanently saves the exact plot shape as one normal
   Selective Render preset and immediately activates it. Both Y boundaries are inclusive.
 - `s` is the short alias for `save`.
 
@@ -40,7 +40,7 @@ delete or rename it before reusing its name.
 Temporary plot mode exists only in client memory and does not modify saved presets.
 It is cleared when the player disconnects or changes dimension.
 
-`/srp save` stores the result in Selective Render's normal server- and
+`/sr plot save` stores the result in Selective Render's normal server- and
 dimension-specific configuration. A merged or irregular plot may contain several
 internal cuboids, but it appears as one named entry in `/sr list`. Toggle, hide,
 rename, and delete operations treat every internal cuboid as one preset.
@@ -59,7 +59,7 @@ Server:
 Client:
 
 - Minecraft 1.20.1 with Fabric Loader
-- [Selective Render 1.7.0 Alpha 3](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.7.0-alpha.3) or newer
+- Selective Render 1.7.0 Alpha 4 or newer
 - The Fabric API and Sodium requirements listed by Selective Render
 
 ## Installation
@@ -68,15 +68,15 @@ Client:
 2. Place the Selective Render Plots JAR in the server's `plugins` directory.
 3. Restart the server; do not use `/reload` for plugin installation.
 4. Install the matching Selective Render JAR and its dependencies on each Fabric client.
-5. Join the server and stand inside a plot before using `/srp`.
+5. Join the server and stand inside a plot before using `/sr plot`.
 
 Selective Render Plots does not modify chunks, collisions, permissions, plot data,
 or network chunk loading. It only resolves the current plot through PlotSquared and
-sends its block boundaries to the player who executed the command.
+sends its block boundaries to the requesting Selective Render client.
 
 ## Permission
 
-`selectiverender.plot.solo` permits use of `/selectiverenderplot` and `/srp`.
+`selectiverender.plot.solo` permits use of the `/sr plot` integration.
 It is granted to all players by default and can be managed with any Bukkit-compatible
 permissions plugin.
 
@@ -101,7 +101,7 @@ The installable JAR is generated in `build/libs`.
 - Minecraft 1.20.1
 - Paper 1.20.1
 - PlotSquared 7.x
-- Selective Render protocol version 1
+- Selective Render protocol version 2
 
 ## License
 
