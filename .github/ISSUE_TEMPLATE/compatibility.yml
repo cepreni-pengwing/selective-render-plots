@@ -1,0 +1,17 @@
+name: Platform compatibility
+description: Request or report compatibility with a server platform or PlotSquared build.
+title: "[Compatibility] "
+labels: [compatibility]
+body:
+  - type: input
+    id: target
+    attributes: {label: Requested platform or dependency version}
+    validations: {required: true}
+  - type: textarea
+    id: environment
+    attributes: {label: Complete server environment}
+    validations: {required: true}
+  - type: textarea
+    id: details
+    attributes: {label: Reason, use case, and relevant logs}
+    validations: {required: true}

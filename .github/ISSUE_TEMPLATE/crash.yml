@@ -1,0 +1,21 @@
+name: Server crash
+description: Report a Paper or Fabric server crash involving Selective Render Plots.
+title: "[Crash] "
+labels: [bug, crash]
+body:
+  - type: dropdown
+    id: platform
+    attributes: {label: Server platform, options: [Paper, Fabric]}
+    validations: {required: true}
+  - type: input
+    id: versions
+    attributes: {label: Minecraft, SRP, PlotSquared, and loader versions}
+    validations: {required: true}
+  - type: textarea
+    id: steps
+    attributes: {label: Reproduction steps}
+    validations: {required: true}
+  - type: textarea
+    id: log
+    attributes: {label: Full server log or crash-report link}
+    validations: {required: true}

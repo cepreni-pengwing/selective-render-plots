@@ -1,0 +1,21 @@
+name: Plot integration bug
+description: Report incorrect plot boundaries, merged regions, or command behavior.
+title: "[Integration] "
+labels: [bug]
+body:
+  - type: dropdown
+    id: platform
+    attributes: {label: Server platform, options: [Paper, Fabric]}
+    validations: {required: true}
+  - type: textarea
+    id: versions
+    attributes: {label: Exact client and server version list}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: Expected and actual result}
+    validations: {required: true}
+  - type: textarea
+    id: evidence
+    attributes: {label: Reproduction steps, plot layout, and logs}
+    validations: {required: true}

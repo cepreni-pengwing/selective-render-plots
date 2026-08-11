@@ -122,6 +122,20 @@ platform JARs and must not be installed separately.
 - Fabric Loader 0.15.11 with ArdaCraft PlotSquared 7.3.9-SNAPSHOT
 - Selective Render protocol version 2
 
+## Known limitations
+
+- The bridge does not change render distance, chunk loading, collision, or server world state.
+- The Fabric build specifically requires the ArdaCraft PlotSquared Fabric port; the regular
+  Bukkit PlotSquared JAR cannot replace it on a Fabric server.
+- Plot region lists are processed linearly and capped at 256 cuboids per logical plot.
+- Rendering behavior belongs to the Selective Render client and cannot be fixed by SRP alone.
+
+## Support and contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes. Use the structured GitHub issue
+forms for crashes, integration failures, and platform compatibility problems. Release history is
+maintained in [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
 MIT. See `LICENSE`.
