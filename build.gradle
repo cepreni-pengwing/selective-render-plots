@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+}
+
+group = 'de.selectiverender.plotsquared'
+version = project.addon_version
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://maven.enginehub.org/repo/' }
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:${project.paper_version}"
+    compileOnly "com.intellectualsites.plotsquared:plotsquared-core:${project.plotsquared_version}@jar"
+    compileOnly "com.intellectualsites.plotsquared:plotsquared-bukkit:${project.plotsquared_version}@jar"
+    compileOnly 'com.sk89q.worldedit:worldedit-core:7.2.15'
+}
+
+configurations.compileClasspath {
+    attributes.attribute(
+            org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE,
+            21)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 17
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('plugin.yml') {
+        expand version: project.version
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar {
+    archiveBaseName = 'selective-render-plotsquared-addon'
+}
