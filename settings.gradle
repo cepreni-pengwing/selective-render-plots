@@ -1,1 +1,9 @@
+pluginManagement {
+    repositories {
+        maven { url = 'https://maven.fabricmc.net/' }
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = 'selective-render-plots'
+include 'common', 'paper', 'fabric'

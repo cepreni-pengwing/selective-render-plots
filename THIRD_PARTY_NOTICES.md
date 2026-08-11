@@ -6,7 +6,8 @@ included in the Selective Render Plots JAR.
 
 - PlotSquared: https://github.com/IntellectualSites/PlotSquared
 - PlotSquared license: https://github.com/IntellectualSites/PlotSquared/blob/v7/LICENSE
+- ArdaCraft PlotSquared Fabric fork: https://github.com/ArdaCraft/PlotSquared
 
-Paper API and WorldEdit are compile-time dependencies and are likewise not
+Paper API, Fabric API, and WorldEdit are compile-time dependencies and are likewise not
 included in the distributed JAR. Their respective projects and licenses remain
 the property of their maintainers.

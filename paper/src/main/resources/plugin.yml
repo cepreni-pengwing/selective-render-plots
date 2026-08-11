@@ -1,6 +1,6 @@
 name: SelectiveRenderPlots
 version: ${version}
-main: de.selectiverender.plots.SelectiveRenderPlotsPlugin
+main: de.selectiverender.plots.paper.SelectiveRenderPlotsPaperPlugin
 api-version: '1.20'
 depend: [PlotSquared]
 authors: [cepreni-pengwing]
