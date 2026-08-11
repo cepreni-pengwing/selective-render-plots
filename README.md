@@ -1,4 +1,4 @@
-# Selective Render PlotSquared Addon
+# Selective Render Plot
 
 Selective Render PlotSquared Addon is an optional Paper plugin that sends exact PlotSquared plot regions to Selective Render clients. It supports merged and non-rectangular plots through PlotSquared's `Plot#getRegions()` API.
 
