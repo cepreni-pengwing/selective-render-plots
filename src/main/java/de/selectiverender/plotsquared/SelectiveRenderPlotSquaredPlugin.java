@@ -23,8 +23,8 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
     @Override
     public void onEnable() {
         getServer().getMessenger().registerOutgoingPluginChannel(this, PlotProtocol.RESPONSE_CHANNEL);
-        PluginCommand command = getCommand("srp");
-        if (command == null) throw new IllegalStateException("The srp command is missing from plugin.yml");
+        PluginCommand command = getCommand("selectiverenderplot");
+        if (command == null) throw new IllegalStateException("The selectiverenderplot command is missing from plugin.yml");
         command.setExecutor(this);
         command.setTabCompleter(this);
         getLogger().info("Selective Render PlotSquared bridge protocol v" + PlotProtocol.VERSION + " enabled");
@@ -54,7 +54,7 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
             sendCurrentPlot(player, PlotProtocol.STATUS_TOGGLE, null, null, null);
             return true;
         }
-        if (args.length == 4 && "s".equalsIgnoreCase(args[0])) {
+        if (args.length == 4 && ("save".equalsIgnoreCase(args[0]) || "s".equalsIgnoreCase(args[0]))) {
             Integer minY = parseCoordinate(player, args[2], "minY");
             Integer maxY = parseCoordinate(player, args[3], "maxY");
             if (minY == null || maxY == null) return true;
@@ -70,8 +70,20 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (args.length == 1 && "s".startsWith(args[0].toLowerCase(Locale.ROOT))) return List.of("s");
+        if (args.length == 1) {
+            String input = args[0].toLowerCase(Locale.ROOT);
+            return List.of("save", "s").stream().filter(value -> value.startsWith(input)).toList();
+        }
+        if (args.length == 2 && isSave(args[0])) return List.of("name");
+        if (sender instanceof Player player && isSave(args[0])) {
+            if (args.length == 3) return List.of(Integer.toString(player.getWorld().getMinHeight()));
+            if (args.length == 4) return List.of(Integer.toString(player.getWorld().getMaxHeight() - 1));
+        }
         return List.of();
+    }
+
+    private boolean isSave(String value) {
+        return "save".equalsIgnoreCase(value) || "s".equalsIgnoreCase(value);
     }
 
     private Integer parseCoordinate(Player player, String value, String label) {

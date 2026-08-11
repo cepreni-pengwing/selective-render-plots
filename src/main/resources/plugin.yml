@@ -6,9 +6,10 @@ depend: [PlotSquared]
 authors: [cepreni-pengwing]
 description: Sends exact PlotSquared regions to Selective Render clients.
 commands:
-  srp:
+  selectiverenderplot:
+    aliases: [srp]
     description: Toggles the current plot or saves its exact shape as a Selective Render preset.
-    usage: /srp or /srp s <name> <minY> <maxY>
+    usage: /selectiverenderplot or /selectiverenderplot save <name> <minY> <maxY>
 permissions:
   selectiverender.plot.solo:
     description: Allows using Selective Render PlotSquared commands.

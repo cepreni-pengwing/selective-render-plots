@@ -17,9 +17,12 @@ The addon does not modify chunks, collisions, permissions, or network chunk load
 
 ## Commands
 
-- `/srp` toggles temporary isolation of the current plot.
-- `/srp s NAME minY maxY` saves the exact plot shape as one permanent normal
+- `/selectiverenderplot` toggles temporary isolation of the current plot.
+- `/selectiverenderplot save NAME minY maxY` saves the exact plot shape as one permanent normal
   Selective Render preset and activates it immediately. Y boundaries are inclusive.
+
+`/srp` is the short alias for `/selectiverenderplot`, and `s` is the short alias
+for `save`. For example, `/srp s NAME minY maxY` performs the same save operation.
 
 Plot mode is temporary and does not modify the client's saved Selective Render presets.
 Saved merged and non-rectangular plots remain one named preset while internally
