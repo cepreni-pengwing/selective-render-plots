@@ -1,6 +1,6 @@
-name: SelectiveRenderPlotSquared
+name: SelectiveRenderPlots
 version: ${version}
-main: de.selectiverender.plotsquared.SelectiveRenderPlotSquaredPlugin
+main: de.selectiverender.plots.SelectiveRenderPlotsPlugin
 api-version: '1.20'
 depend: [PlotSquared]
 authors: [cepreni-pengwing]
@@ -12,5 +12,5 @@ commands:
     usage: /selectiverenderplot or /selectiverenderplot save <name> <minY> <maxY>
 permissions:
   selectiverender.plot.solo:
-    description: Allows using Selective Render PlotSquared commands.
+    description: Allows using Selective Render Plots commands.
     default: true

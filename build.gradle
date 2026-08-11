@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'de.selectiverender.plotsquared'
+group = 'de.selectiverender.plots'
 version = project.addon_version
 
 repositories {
@@ -42,5 +42,5 @@ java {
 }
 
 jar {
-    archiveBaseName = 'selective-render-plotsquared-addon'
+    archiveBaseName = 'selective-render-plots'
 }

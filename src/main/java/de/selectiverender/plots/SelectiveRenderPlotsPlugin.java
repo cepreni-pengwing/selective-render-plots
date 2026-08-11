@@ -1,4 +1,4 @@
-package de.selectiverender.plotsquared;
+package de.selectiverender.plots;
 
 import com.plotsquared.bukkit.util.BukkitUtil;
 import com.plotsquared.core.plot.Plot;
@@ -19,7 +19,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implements CommandExecutor, TabCompleter {
+public final class SelectiveRenderPlotsPlugin extends JavaPlugin implements CommandExecutor, TabCompleter {
     @Override
     public void onEnable() {
         getServer().getMessenger().registerOutgoingPluginChannel(this, PlotProtocol.RESPONSE_CHANNEL);
@@ -27,7 +27,7 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
         if (command == null) throw new IllegalStateException("The selectiverenderplot command is missing from plugin.yml");
         command.setExecutor(this);
         command.setTabCompleter(this);
-        getLogger().info("Selective Render PlotSquared bridge protocol v" + PlotProtocol.VERSION + " enabled");
+        getLogger().info("Selective Render Plots bridge protocol v" + PlotProtocol.VERSION + " enabled");
     }
 
     @Override

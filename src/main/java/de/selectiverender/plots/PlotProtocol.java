@@ -1,4 +1,4 @@
-package de.selectiverender.plotsquared;
+package de.selectiverender.plots;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
