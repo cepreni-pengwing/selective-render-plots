@@ -27,10 +27,9 @@ Available commands:
   Selective Render preset and immediately activates it. Both Y boundaries are inclusive.
 - `s` is the short alias for `save`.
 
-Command arguments support tab completion. The save command suggests a name field
-followed by the current world's minimum and maximum build heights. These Y values
-are suggestions only: values below or above the dimension's normal build range are
-accepted deliberately.
+The client-side command tree exposes `<name>`, `<minY>`, and `<maxY>` as Brigadier
+arguments. Both Y values accept any whole number, including values below or above
+the dimension's normal build range.
 
 Preset names must be unique. An existing Selective Render preset is never overwritten;
 delete or rename it before reusing its name.
@@ -59,7 +58,7 @@ Server:
 Client:
 
 - Minecraft 1.20.1 with Fabric Loader
-- Selective Render 1.7.0 Alpha 4 or newer
+- [Selective Render 1.7.0 Alpha 4](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.7.0-alpha.4) or newer
 - The Fabric API and Sodium requirements listed by Selective Render
 
 ## Installation
