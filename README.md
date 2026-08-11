@@ -58,7 +58,7 @@ Server:
 Client:
 
 - Minecraft 1.20.1 with Fabric Loader
-- [Selective Render 1.7.0 Alpha 4](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.7.0-alpha.4) or newer
+- [Selective Render 1.7.0](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.7.0) or newer
 - The Fabric API and Sodium requirements listed by Selective Render
 
 ## Installation
