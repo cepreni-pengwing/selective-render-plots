@@ -20,8 +20,6 @@ import java.util.List;
 import java.util.Locale;
 
 public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implements CommandExecutor, TabCompleter {
-    private static final List<String> SUBCOMMANDS = List.of("solo", "refresh", "off", "status");
-
     @Override
     public void onEnable() {
         getServer().getMessenger().registerOutgoingPluginChannel(this, PlotProtocol.RESPONSE_CHANNEL);
@@ -43,7 +41,6 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
             sender.sendMessage("This command can only be used by a player.");
             return true;
         }
-        if (args.length != 1) return false;
         if (!player.hasPermission("selectiverender.plot.solo")) {
             send(player, PlotProtocol.STATUS_NO_PERMISSION, "", List.of());
             return true;
@@ -53,26 +50,45 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
             return true;
         }
 
-        return switch (args[0].toLowerCase(Locale.ROOT)) {
-            case "solo", "s", "refresh", "r" -> { sendCurrentPlot(player, PlotProtocol.STATUS_OK); yield true; }
-            case "status" -> { sendCurrentPlot(player, PlotProtocol.STATUS_INFO); yield true; }
-            case "off", "o" -> { send(player, PlotProtocol.STATUS_OFF, "", List.of()); yield true; }
-            default -> false;
-        };
+        if (args.length == 0) {
+            sendCurrentPlot(player, PlotProtocol.STATUS_TOGGLE, null, null, null);
+            return true;
+        }
+        if (args.length == 4 && "s".equalsIgnoreCase(args[0])) {
+            Integer minY = parseCoordinate(player, args[2], "minY");
+            Integer maxY = parseCoordinate(player, args[3], "maxY");
+            if (minY == null || maxY == null) return true;
+            if (minY > maxY) {
+                player.sendMessage("minY must not be greater than maxY.");
+                return true;
+            }
+            sendCurrentPlot(player, PlotProtocol.STATUS_SAVE, args[1], minY, maxY);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (args.length != 1) return List.of();
-        String input = args[0].toLowerCase(Locale.ROOT);
-        return SUBCOMMANDS.stream().filter(value -> value.startsWith(input)).toList();
+        if (args.length == 1 && "s".startsWith(args[0].toLowerCase(Locale.ROOT))) return List.of("s");
+        return List.of();
     }
 
-    private void sendCurrentPlot(Player player, int status) {
+    private Integer parseCoordinate(Player player, String value, String label) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException exception) {
+            player.sendMessage(label + " must be a whole number.");
+            return null;
+        }
+    }
+
+    private void sendCurrentPlot(Player player, int status, String presetName, Integer minY, Integer maxY) {
         try {
             Plot plot = BukkitUtil.adapt(player).getCurrentPlot();
             if (plot == null) {
-                send(player, PlotProtocol.STATUS_NO_PLOT, "", List.of());
+                send(player, status == PlotProtocol.STATUS_TOGGLE
+                        ? PlotProtocol.STATUS_TOGGLE : PlotProtocol.STATUS_NO_PLOT, "", List.of());
                 return;
             }
             List<CuboidRegion> regions = plot.getRegions().stream()
@@ -83,7 +99,8 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
             if (regions.isEmpty() || regions.size() > PlotProtocol.MAX_REGIONS) {
                 throw new IOException("Plot returned an invalid region count: " + regions.size());
             }
-            send(player, status, plot.getId().toString(), regions);
+            send(player, status, presetName == null ? plot.getId().toString() : presetName,
+                    regions, minY, maxY);
         } catch (RuntimeException | IOException exception) {
             getLogger().severe("Could not resolve plot regions for " + player.getName() + ": " + exception.getMessage());
             send(player, PlotProtocol.STATUS_ERROR, "", List.of());
@@ -91,6 +108,11 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
     }
 
     private void send(Player player, int status, String plotId, List<CuboidRegion> regions) {
+        send(player, status, plotId, regions, null, null);
+    }
+
+    private void send(Player player, int status, String plotId, List<CuboidRegion> regions,
+                      Integer requestedMinY, Integer requestedMaxY) {
         try {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             try (DataOutputStream output = new DataOutputStream(bytes)) {
@@ -104,8 +126,8 @@ public final class SelectiveRenderPlotSquaredPlugin extends JavaPlugin implement
                     BlockVector3 max = region.getMaximumPoint();
                     output.writeInt(min.getX());
                     output.writeInt(max.getX());
-                    output.writeInt(min.getY());
-                    output.writeInt(max.getY());
+                    output.writeInt(requestedMinY == null ? min.getY() : requestedMinY);
+                    output.writeInt(requestedMaxY == null ? max.getY() : requestedMaxY);
                     output.writeInt(min.getZ());
                     output.writeInt(max.getZ());
                 }

@@ -15,6 +15,8 @@ final class PlotProtocol {
     static final int STATUS_ERROR = 3;
     static final int STATUS_OFF = 4;
     static final int STATUS_INFO = 5;
+    static final int STATUS_TOGGLE = 6;
+    static final int STATUS_SAVE = 7;
 
     private PlotProtocol() { }
 

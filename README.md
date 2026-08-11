@@ -17,12 +17,13 @@ The addon does not modify chunks, collisions, permissions, or network chunk load
 
 ## Commands
 
-- `/srp solo` or `/srp s` isolates the current plot.
-- `/srp refresh` or `/srp r` updates the active plot regions.
-- `/srp off` or `/srp o` leaves plot mode.
-- `/srp status` shows the current plot and client-side plot-mode state.
+- `/srp` toggles temporary isolation of the current plot.
+- `/srp s NAME minY maxY` saves the exact plot shape as one permanent normal
+  Selective Render preset and activates it immediately. Y boundaries are inclusive.
 
-Plot mode is temporary and does not modify the client's saved Selective Render presets. Merged and non-rectangular plots are represented by all regions returned by PlotSquared.
+Plot mode is temporary and does not modify the client's saved Selective Render presets.
+Saved merged and non-rectangular plots remain one named preset while internally
+containing every region returned by PlotSquared.
 
 ## Build
 

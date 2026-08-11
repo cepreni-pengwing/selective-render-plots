@@ -7,8 +7,8 @@ authors: [cepreni-pengwing]
 description: Sends exact PlotSquared regions to Selective Render clients.
 commands:
   srp:
-    description: Controls Selective Render for the PlotSquared plot under the player.
-    usage: /srp <solo|refresh|off|status>
+    description: Toggles the current plot or saves its exact shape as a Selective Render preset.
+    usage: /srp or /srp s <name> <minY> <maxY>
 permissions:
   selectiverender.plot.solo:
     description: Allows using Selective Render PlotSquared commands.
