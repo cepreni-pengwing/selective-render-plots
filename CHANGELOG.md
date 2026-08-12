@@ -4,6 +4,11 @@ All notable changes to Selective Render Plots are documented here.
 
 ## Unreleased
 
+### Changed
+
+- Project license changed from MIT to GPL-3.0-only.
+- Documentation now covers Selective Render 1.7.4 plot margins and custom temporary Y bounds.
+
 ### Added
 
 - Automated protocol tests, Java 17 common-module tests, and Java 21 platform builds.

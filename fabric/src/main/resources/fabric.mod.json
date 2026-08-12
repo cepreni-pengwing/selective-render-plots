@@ -5,7 +5,7 @@
   "name": "Selective Render Plots",
   "description": "Sends exact PlotSquared regions to Selective Render clients.",
   "authors": ["cepreni-pengwing"],
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "environment": "server",
   "entrypoints": {
     "main": ["de.selectiverender.plots.fabric.SelectiveRenderPlotsFabricMod"]
