@@ -2,7 +2,7 @@
 
 All notable changes to Selective Render Plots are documented here.
 
-## 1.1.1
+## Unreleased
 
 ### Changed
 
@@ -11,7 +11,6 @@ All notable changes to Selective Render Plots are documented here.
 
 ### Added
 
-- Added an embedded icon to the Fabric server mod.
 - Automated protocol tests, Java 17 common-module tests, and Java 21 platform builds.
 - Contribution guidance and structured issue forms.
 - Tag-driven builds for future GitHub releases.
