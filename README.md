@@ -139,6 +139,8 @@ platform JARs and must not be installed separately.
 
 ## Support and contributing
 
+Contact: [pengwing.ac@gmail.com](mailto:pengwing.ac@gmail.com).
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes. Use the structured GitHub issue
 forms for crashes, integration failures, and platform compatibility problems. Release history is
 maintained in [CHANGELOG.md](CHANGELOG.md).

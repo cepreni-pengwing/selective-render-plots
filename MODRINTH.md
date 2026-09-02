@@ -75,5 +75,7 @@ chunk loading. Responses are capped at 256 cuboids per logical plot.
 Rendering behavior and its limitations belong to the Selective Render client. The bridge uses
 Selective Render protocol version 2; the optional X/Z margin is applied client-side.
 
+Contact: [pengwing.ac@gmail.com](mailto:pengwing.ac@gmail.com).
+
 Licensed under GPL-3.0-only. PlotSquared is a separate GPL-3.0 runtime dependency and is not
 included in the distributed JARs.
