@@ -2,6 +2,9 @@
 
 [Download Selective Render Plots on Modrinth](https://modrinth.com/plugin/selective-render-plots)
 
+The existing SRP 1.1.0 bridge is compatible with Selective Render 1.9.0; no server update or
+protocol change is required for the client release.
+
 Selective Render Plots connects PlotSquared servers to
 [Selective Render](https://modrinth.com/mod/selective-render). It sends the exact
 shape of the plot under a player to their Fabric client, including merged and irregular plots
@@ -18,28 +21,35 @@ for `/selectiverender`, `p` for `plot`, and `s` for `save`.
 
 ```text
 /sr plot
-/sr plot minY maxY [xzMargin]
-/sr plot save NAME minY maxY [xzMargin]
-/sr p s NAME minY maxY [xzMargin]
+/sr plot [minY] [maxY] [xzMargin]
+/sr plot clear
+/sr plot save NAME [minY] [maxY] [xzMargin]
+/sr p s NAME [minY] [maxY] [xzMargin]
 ```
 
-- `/sr plot` toggles temporary isolation of the PlotSquared plot under the player.
-- `/sr plot minY maxY xzMargin` does the same with custom inclusive vertical bounds and an
-  outward horizontal margin.
-- `/sr plot save NAME minY maxY` permanently saves the exact plot shape as one normal Selective
-  Render preset and immediately activates it. Adding `xzMargin` expands every internal plot
-  cuboid horizontally by that many blocks.
+- `/sr plot` adds the plot under the player to temporary isolation. Using it again on an active
+  plot removes only that plot, so several plots can be rendered together.
+- `/sr plot clear` clears the complete temporary plot group.
+- Optional Y values set custom inclusive vertical bounds. Omitted values use the client's configured
+  minimum (initially `-100`) and maximum `400`.
+- A positive `xzMargin` expands the complete plot shape horizontally; a negative value shrinks it.
+  A margin that would erase the entire plot shape is rejected.
+- `/sr plot save NAME` permanently saves the exact plot shape as one normal Selective Render
+  preset and immediately activates it. It accepts the same optional Y values and margin.
 - `s` is the short alias for `save`.
+- Only the first plot in an empty selection automatically enables rendering. Switch it off with
+  `/sr t` to collect further plots without hiding the world; `/sr t` enables the selection again.
 
-Both Y values accept any whole number, including values outside the dimension's normal build
-range. The optional X/Z margin must be zero or greater; omitting it preserves the exact plot
-bounds. Preset names must be unique; delete or rename an existing preset before reusing its name.
+Y values and margins accept whole numbers, including Y values outside the dimension's normal build
+range. Omitting the margin preserves the exact plot bounds. Preset names must be unique; delete or
+rename an existing preset before reusing its name.
 
 ## Plot regions and presets
 
-Temporary plot mode exists only in client memory and is cleared when the player disconnects or
-changes dimension. `/sr plot save` stores the result in Selective Render's normal server- and
-dimension-specific configuration.
+Temporary plot mode exists only in client memory, but its plot groups and enabled state survive
+reconnects and dimension changes during the current Minecraft session. They remain separate per
+server or world and dimension. `/sr plot save` stores the result in Selective Render's normal
+server- and dimension-specific configuration.
 
 A merged or irregular plot may contain several internal cuboids, but it appears as one named
 entry in `/sr list`. Toggle, hide, rename, and delete operations treat every internal cuboid as
@@ -51,7 +61,7 @@ The protocol accepts up to 256 PlotSquared regions per plot.
 Client:
 
 - Minecraft 1.20.1 with Fabric Loader
-- [Selective Render 1.7.4](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.7.4) or newer
+- Selective Render 1.8.0 or newer; [1.9.0](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.9.0) is recommended
 - Fabric API and Sodium as required by Selective Render
 
 Paper server:
@@ -96,6 +106,13 @@ boundaries to clients that explicitly request them.
 On Paper it is granted by default and can be managed with a Bukkit-compatible permissions
 plugin. On the ArdaCraft Fabric port, its built-in permission handler or Fabric LuckPerms
 integration determines access according to the server's PlotSquared permission setup.
+With LuckPerms on Fabric, grant the node explicitly to every intended user or group. On Paper, use
+the same grant if the server's permission policy overrides the plugin's default or access is denied.
+For example:
+
+```text
+/lp user PLAYER permission set selectiverender.plot.solo true
+```
 
 ## Building
 
@@ -138,6 +155,8 @@ platform JARs and must not be installed separately.
 - Rendering behavior belongs to the Selective Render client and cannot be fixed by SRP alone.
 
 ## Support and contributing
+
+Contact: [pengwing.ac@gmail.com](mailto:pengwing.ac@gmail.com).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes. Use the structured GitHub issue
 forms for crashes, integration failures, and platform compatibility problems. Release history is
