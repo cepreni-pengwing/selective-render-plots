@@ -41,5 +41,5 @@ java {
 }
 
 base {
-    archivesName = 'selective-render-plots-fabric'
+    archivesName = "selective-render-plots-fabric-mc${project.minecraft_version}"
 }

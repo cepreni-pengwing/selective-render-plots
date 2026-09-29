@@ -2,6 +2,20 @@ plugins {
     id 'java'
 }
 
+def targetMinecraftVersion = providers.gradleProperty('target_minecraft_version').get()
+def supportedPaperVersions = [
+    '1.20.1': providers.gradleProperty('paper_version_1_20_1').get(),
+    '1.21.1': providers.gradleProperty('paper_version_1_21_1').get()
+]
+def supportedApiVersions = [
+    '1.20.1': '1.20',
+    '1.21.1': '1.21.1'
+]
+def targetPaperVersion = supportedPaperVersions[targetMinecraftVersion]
+if (targetPaperVersion == null) {
+    throw new GradleException("Unsupported Paper Minecraft version: ${targetMinecraftVersion}")
+}
+
 repositories {
     mavenCentral()
     maven { url = 'https://repo.papermc.io/repository/maven-public/' }
@@ -10,7 +24,7 @@ repositories {
 
 dependencies {
     implementation project(':common')
-    compileOnly "io.papermc.paper:paper-api:${project.paper_version}"
+    compileOnly "io.papermc.paper:paper-api:${targetPaperVersion}"
     compileOnly "com.intellectualsites.plotsquared:plotsquared-core:${project.plotsquared_version}@jar"
     compileOnly "com.intellectualsites.plotsquared:plotsquared-bukkit:${project.plotsquared_version}@jar"
     compileOnly 'com.sk89q.worldedit:worldedit-core:7.2.15'
@@ -27,8 +41,9 @@ tasks.withType(JavaCompile).configureEach {
 
 processResources {
     inputs.property 'version', project.version
+    inputs.property 'apiVersion', supportedApiVersions[targetMinecraftVersion]
     filesMatching('plugin.yml') {
-        expand version: project.version
+        expand version: project.version, apiVersion: supportedApiVersions[targetMinecraftVersion]
     }
 }
 
@@ -38,7 +53,7 @@ java {
 }
 
 jar {
-    archiveBaseName = 'selective-render-plots-paper'
+    archiveBaseName = "selective-render-plots-paper-mc${targetMinecraftVersion}"
     from project(':common').sourceSets.main.output
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

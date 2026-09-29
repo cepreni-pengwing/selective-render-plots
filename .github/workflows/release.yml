@@ -18,12 +18,26 @@ jobs:
           java-version: '21'
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
-      - run: ./gradlew clean build --stacktrace
+      - name: Verify tag version
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          EXPECTED="$(sed -n 's/^addon_version=//p' gradle.properties)"
+          test "$VERSION" = "$EXPECTED"
+      - name: Build release matrix
+        shell: bash
+        run: |
+          mkdir -p release-staging
+          ./gradlew clean :paper:build -Ptarget_minecraft_version=1.20.1 --stacktrace
+          cp paper/build/libs/selective-render-plots-paper-mc1.20.1-*.jar release-staging/
+          ./gradlew clean :paper:build -Ptarget_minecraft_version=1.21.1 --stacktrace
+          cp paper/build/libs/selective-render-plots-paper-mc1.21.1-*.jar release-staging/
+          ./gradlew clean :fabric:build --stacktrace
+          cp fabric/build/libs/selective-render-plots-fabric-mc1.20.1-*.jar release-staging/
       - name: Publish tagged platform JARs
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
-            paper/build/libs/selective-render-plots-paper-*.jar \
-            fabric/build/libs/selective-render-plots-fabric-*.jar \
-            --generate-notes --verify-tag
+            release-staging/*.jar \
+            --generate-notes --verify-tag --prerelease

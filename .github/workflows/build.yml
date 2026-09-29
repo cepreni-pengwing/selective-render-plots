@@ -21,6 +21,22 @@ jobs:
       - run: ./gradlew :common:test --stacktrace
 
   platform-builds:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: paper-mc1.20.1
+            tasks: ':paper:build'
+            args: '-Ptarget_minecraft_version=1.20.1'
+            path: 'paper/build/libs/selective-render-plots-paper-mc1.20.1-*.jar'
+          - name: paper-mc1.21.1
+            tasks: ':paper:build'
+            args: '-Ptarget_minecraft_version=1.21.1'
+            path: 'paper/build/libs/selective-render-plots-paper-mc1.21.1-*.jar'
+          - name: fabric-mc1.20.1
+            tasks: ':fabric:build'
+            args: ''
+            path: 'fabric/build/libs/selective-render-plots-fabric-mc1.20.1-*.jar'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,10 +46,8 @@ jobs:
           java-version: '21'
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
-      - run: ./gradlew build --stacktrace
+      - run: ./gradlew ${{ matrix.tasks }} ${{ matrix.args }} --stacktrace
       - uses: actions/upload-artifact@v4
         with:
-          name: selective-render-plots
-          path: |
-            paper/build/libs/*.jar
-            fabric/build/libs/*.jar
+          name: selective-render-plots-${{ matrix.name }}
+          path: ${{ matrix.path }}

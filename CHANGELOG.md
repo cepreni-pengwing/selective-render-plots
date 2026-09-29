@@ -4,6 +4,13 @@ All notable changes to Selective Render Plots are documented here.
 
 ## Unreleased
 
+## 1.2.0
+
+### Added
+
+- Added separate Paper builds for Minecraft 1.20.1 and 1.21.1.
+- Release automation now publishes every supported platform/version JAR together in one release.
+
 ### Changed
 
 - Project license changed from MIT to GPL-3.0-only.

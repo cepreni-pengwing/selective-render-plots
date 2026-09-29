@@ -1,27 +1,28 @@
 # Selective Render Plots
 
-SRP 1.1.0 works with Selective Render 1.9.0. This client update does not require a new server bridge.
+SRP 1.2.0 provides clearly labelled downloads for every supported server platform and Minecraft
+version in one release.
 
 Selective Render Plots is the optional server bridge that connects
 [Selective Render](https://modrinth.com/mod/selective-render) clients to exact PlotSquared
 regions. It supports merged and irregular plots represented by multiple PlotSquared cuboids.
 
-The project provides separate downloads for Paper and Fabric servers. Install only the JAR that
-matches your server platform. The bridge performs no rendering by itself: every player using the
-feature needs Selective Render on their Fabric client.
+The project provides separate downloads for Paper and Fabric servers. Install only the JAR matching
+both your server platform and Minecraft version. The bridge performs no rendering by itself: every
+player using the feature needs Selective Render on their Fabric client.
 
 ## Requirements
 
 Client:
 
-- Minecraft 1.20.1 with Fabric Loader
+- Minecraft 1.20.1 or 1.21.1 with Fabric Loader
 - Selective Render 1.8.0 or newer (1.9.0 recommended)
 - Fabric API and Sodium as required by Selective Render
 
 Paper server:
 
-- Paper 1.20.1 or a compatible Bukkit implementation
-- Java 17
+- Paper 1.20.1 or 1.21.1, using the correspondingly labelled SRP JAR
+- Java 17 for 1.20.1 or Java 21 for 1.21.1
 - PlotSquared 7.x, tested with 7.3.9
 
 Fabric server:
@@ -32,12 +33,15 @@ Fabric server:
   7.3.9-SNAPSHOT
 - The Multiworld, Stimuli, and WorldEdit/FAWE dependencies required by that PlotSquared build
 
+Fabric 1.21.1 is not currently available because the required PlotSquared Fabric port does not
+support that Minecraft version.
+
 The regular Bukkit PlotSquared JAR cannot be used on a Fabric server.
 
 ## Installation
 
-- Paper: place `selective-render-plots-paper-VERSION.jar` in `plugins/`.
-- Fabric: place `selective-render-plots-fabric-VERSION.jar` in `mods/`.
+- Paper: place `selective-render-plots-paper-mcMINECRAFT-VERSION.jar` in `plugins/`.
+- Fabric: place `selective-render-plots-fabric-mcMINECRAFT-VERSION.jar` in `mods/`.
 - Install Selective Render and its client dependencies for every player who will use the feature.
 - Restart the server after installation.
 

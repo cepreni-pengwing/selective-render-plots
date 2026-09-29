@@ -2,15 +2,16 @@
 
 [Download Selective Render Plots on Modrinth](https://modrinth.com/plugin/selective-render-plots)
 
-The existing SRP 1.1.0 bridge is compatible with Selective Render 1.9.0; no server update or
-protocol change is required for the client release.
+SRP 1.2.0 provides clearly labelled downloads for every supported server platform and Minecraft
+version. All builds use the same protocol and work with matching Selective Render clients.
 
 Selective Render Plots connects PlotSquared servers to
 [Selective Render](https://modrinth.com/mod/selective-render). It sends the exact
 shape of the plot under a player to their Fabric client, including merged and irregular plots
 represented by multiple PlotSquared regions.
 
-The project provides separate server JARs for Paper and Fabric. Both use the same protocol and
+The project provides separate server JARs for Paper and Fabric. Each GitHub release contains all
+supported platform/version variants. All variants use the same protocol and
 work with the same Selective Render client. The bridge performs no rendering by itself;
 Selective Render must be installed on the connecting client.
 
@@ -60,14 +61,14 @@ The protocol accepts up to 256 PlotSquared regions per plot.
 
 Client:
 
-- Minecraft 1.20.1 with Fabric Loader
+- Minecraft 1.20.1 or 1.21.1 with Fabric Loader
 - Selective Render 1.8.0 or newer; [1.9.0](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.9.0) is recommended
 - Fabric API and Sodium as required by Selective Render
 
 Paper server:
 
-- Paper 1.20.1 or a compatible Bukkit implementation
-- Java 17
+- Paper 1.20.1 or 1.21.1, using the correspondingly labelled SRP JAR
+- Java 17 for 1.20.1 or Java 21 for 1.21.1
 - PlotSquared 7.x, tested with 7.3.9
 
 Fabric server:
@@ -77,6 +78,9 @@ Fabric server:
 - Fabric API 0.92.2+1.20.1
 - [ArdaCraft PlotSquared Fabric](https://github.com/ArdaCraft/PlotSquared), tested with 7.3.9-SNAPSHOT
 - The Multiworld, Stimuli, and WorldEdit/FAWE dependencies required by that PlotSquared build
+
+There is currently no Fabric 1.21.1 server build because the required PlotSquared Fabric port is
+not available for that Minecraft version.
 
 ## Installation
 
