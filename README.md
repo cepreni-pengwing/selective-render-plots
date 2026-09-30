@@ -32,7 +32,7 @@ for `/selectiverender`, `p` for `plot`, and `s` for `save`.
   plot removes only that plot, so several plots can be rendered together.
 - `/sr plot clear` clears the complete temporary plot group.
 - Optional Y values set custom inclusive vertical bounds. Omitted values use the client's configured
-  minimum (initially `-100`) and maximum `400`.
+  minimum (initially `-64`) and maximum `400`.
 - A positive `xzMargin` expands the complete plot shape horizontally; a negative value shrinks it.
   A margin that would erase the entire plot shape is rejected.
 - `/sr plot save NAME` permanently saves the exact plot shape as one normal Selective Render
@@ -62,7 +62,7 @@ The protocol accepts up to 256 PlotSquared regions per plot.
 Client:
 
 - Minecraft 1.20.1 or 1.21.1 with Fabric Loader
-- Selective Render 1.8.0 or newer; [1.9.0](https://github.com/cepreni-pengwing/selective-render/releases/tag/v1.9.0) is recommended
+- Selective Render 1.8.0 or newer; use the latest build available for the client's Minecraft version
 - Fabric API and Sodium as required by Selective Render
 
 Paper server:

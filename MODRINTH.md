@@ -16,7 +16,7 @@ player using the feature needs Selective Render on their Fabric client.
 Client:
 
 - Minecraft 1.20.1 or 1.21.1 with Fabric Loader
-- Selective Render 1.8.0 or newer (1.9.0 recommended)
+- Selective Render 1.8.0 or newer; the latest matching client build is recommended
 - Fabric API and Sodium as required by Selective Render
 
 Paper server:
@@ -63,7 +63,7 @@ The integration is part of Selective Render's client-side command tree. `/sr` ab
   removes only that plot, allowing several plots to be rendered together.
 - `/sr p clear` clears the complete temporary plot group.
 - Optional Y values set inclusive vertical bounds, may be outside normal build height, and default
-  to the client's configured minimum (initially `-100`) and maximum `400` when omitted.
+  to the client's configured minimum (initially `-64`) and maximum `400` when omitted.
 - A positive `xzMargin` expands the complete plot shape and a negative value shrinks it; omitting
   the margin keeps the exact PlotSquared boundaries. Invalid margins that erase the shape are
   rejected.
