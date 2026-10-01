@@ -6,7 +6,7 @@ SRP 1.2.0 provides clearly labelled downloads for every supported server platfor
 version. All builds use the same protocol and work with matching Selective Render clients.
 
 Selective Render Plots connects PlotSquared servers to
-[Selective Render](https://modrinth.com/mod/selective-render). It sends the exact
+[Selective Render](https://github.com/cepreni-pengwing/selective-render). It sends the exact
 shape of the plot under a player to their Fabric client, including merged and irregular plots
 represented by multiple PlotSquared regions.
 
