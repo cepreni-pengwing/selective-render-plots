@@ -8,12 +8,11 @@ Selective Render Plots is an optional server add-on for [Selective Render](https
 
 These are Selective Render client commands, not server commands. `/sr` is short for `/selectiverender`, `p` for `plot`, and `s` for `save`. No command below has its own dedicated key except the plot toggle and clear bindings noted here.
 
-| Priority | Command | What it does | Keybind (default) |
+| Command aliases | Full command (without `/sr`) | What it does | Keybind (default) |
 |---|---|---|---|
-| Basic | `/sr plot` (`/sr p`) | Add the plot beneath you to the temporary group, or remove it if already present. | `Backspace` |
-| Basic | `/sr plot [minY] [maxY] [xzMargin]` (`/sr p ...`) | Same toggle with custom inclusive height and horizontal margin. | `Backspace` |
-| Manage | `/sr plot clear` (`/sr p clear`) | Clear all plots in the temporary group. | Unassigned |
-| Save | `/sr plot save NAME [minY] [maxY] [xzMargin]` (`/sr p save` or `/sr p s ...`) | Save the plot as a regular named Selective Render region and enable it. | None |
+| `/sr p`, `/sr plot` | `plot [minY] [maxY] [xzMargin]` | Add or remove the plot beneath you, optionally setting inclusive height and horizontal margin. | `Backspace` |
+| `/sr p clear`, `/sr plot clear` | `plot clear` | Clear all plots in the temporary group. | Unassigned |
+| `/sr p s`, `/sr p save`, `/sr plot save` | `plot save NAME [minY] [maxY] [xzMargin]` | Save the plot as a regular named Selective Render region and enable it. |  |
 
 Omitted height limits use the client's configured minimum (default `-64`) and maximum `400`. A positive margin expands the plot horizontally; a negative margin shrinks it. A margin that would remove the entire plot is rejected. Use `/sr toggle` (`/sr t`) to switch the current render group off while collecting more plots, then on again when ready. Only the first plot added to an empty group enables isolation automatically.
 
