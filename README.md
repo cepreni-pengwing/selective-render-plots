@@ -10,9 +10,20 @@ These are Selective Render client commands, not server commands. `/sr` is short 
 
 | Alias | Expanded command | Purpose | Key |
 |---|---|---|---|
-| `/sr p` | <small>`plot [minY] [maxY] [xzMargin]`</small> | Add or remove the plot below you. | `Backspace` |
-| `/sr p` | `plot clear` | Clear temporary plots. | Unassigned |
+| `/sr p` | <small>`plot [minY] [maxY] [xzMargin]`</small> | Add or remove the plot below you. | Not Bound |
+| `/sr p` | `plot clear` | Clear temporary plots. | Not Bound |
 | `/sr p` | <small>`plot save NAME [minY] [maxY] [xzMargin]` (`s` alias)</small> | Save plot as a named region. |  |
+|  |  | Clear temporary plots. | Not Bound |
+|  |  | Cycle boundary faces. | Not Bound |
+|  |  | Cycle interaction mode. | Not Bound |
+|  |  | Cycle player visibility. | Not Bound |
+|  |  | Open settings. | `#` |
+|  |  | Set selection position 1. | Not Bound |
+|  |  | Set selection position 2. | Not Bound |
+|  |  | Toggle current plot region. | Not Bound |
+|  |  | Toggle all block filters. | Not Bound |
+|  |  | Toggle hide group. | `F10` |
+|  |  | Toggle render group. | `F9` |
 
 Keybinds shown in the table are defaults. Omitted height limits use the client's configured minimum (default `-64`) and maximum `400`. A positive margin expands the plot horizontally; a negative margin shrinks it. A margin that would remove the entire plot is rejected. Use `/sr toggle` (`/sr t`) to switch the current render group off while collecting more plots, then on again when ready. Only the first plot added to an empty group enables isolation automatically.
 
