@@ -17,14 +17,7 @@ Commands are entered in the player's Selective Render client, not on the server.
 <tr><td><code>plot clear</code></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
 <tr><td><code>plot save NAME [minY] [maxY] [xzMargin]</code> (<code>s</code> alias)</td><td>Save plot as a named region</td><td></td></tr>
 <tr><td></td><td></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Cycle boundary faces</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Cycle interaction mode</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Cycle player visibility</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Open settings</td><td><code>#</code></td></tr>
-<tr><td></td><td></td><td>Set selection position 1</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Set selection position 2</td><td>Not Bound</td></tr>
 <tr><td></td><td></td><td>Toggle current plot region</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Toggle all block filters</td><td>Not Bound</td></tr>
 </tbody>
 </table>
 
