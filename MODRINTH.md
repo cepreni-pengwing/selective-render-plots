@@ -13,7 +13,7 @@ Commands are entered in the player's Selective Render client, not on the server.
 <table>
 <thead><tr><th>Alias</th><th>Expanded command</th><th>Purpose</th><th>Key</th></tr></thead>
 <tbody>
-<tr><td rowspan="3"><code>/sr p</code></td><td><code>plot [minY] [maxY] [xzMargin]</code></td><td>Add or remove the plot beneath you</td><td>Not Bound</td></tr>
+<tr><td rowspan="3"><code>/sr&nbsp;p</code></td><td><code>plot [minY] [maxY] [xzMargin]</code></td><td>Add or remove the plot beneath you</td><td>Not Bound</td></tr>
 <tr><td><code>plot clear</code></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
 <tr><td><code>plot save NAME [minY] [maxY] [xzMargin]</code> (<code>s</code> alias)</td><td>Save plot as a named region</td><td></td></tr>
 <tr><td></td><td></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
