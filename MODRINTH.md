@@ -10,22 +10,23 @@ Install PlotSquared and the server file matching your platform and game version.
 
 Commands are entered in the player's Selective Render client, not on the server. `/sr` is short for `/selectiverender`; `p` means `plot` and `s` means `save`.
 
-| Alias | Expanded command | Purpose | Key |
-|---|---|---|---|
-| `/sr p` | <small>`plot [minY] [maxY] [xzMargin]`</small> | Add or remove the plot beneath you. | Not Bound |
-| `/sr p` | `plot clear` | Clear temporary plots. | Not Bound |
-| `/sr p` | <small>`plot save NAME [minY] [maxY] [xzMargin]` (`s` alias)</small> | Save plot as a named region. |  |
-|  |  | Clear temporary plots. | Not Bound |
-|  |  | Cycle boundary faces. | Not Bound |
-|  |  | Cycle interaction mode. | Not Bound |
-|  |  | Cycle player visibility. | Not Bound |
-|  |  | Open settings. | `#` |
-|  |  | Set selection position 1. | Not Bound |
-|  |  | Set selection position 2. | Not Bound |
-|  |  | Toggle current plot region. | Not Bound |
-|  |  | Toggle all block filters. | Not Bound |
-|  |  | Toggle hide group. | `F10` |
-|  |  | Toggle render group. | `F9` |
+<table>
+<thead><tr><th>Alias</th><th>Expanded command</th><th>Purpose</th><th>Key</th></tr></thead>
+<tbody>
+<tr><td rowspan="3"><code>/sr p</code></td><td><code>plot [minY] [maxY] [xzMargin]</code></td><td>Add or remove the plot beneath you</td><td>Not Bound</td></tr>
+<tr><td><code>plot clear</code></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
+<tr><td><code>plot save NAME [minY] [maxY] [xzMargin]</code> (<code>s</code> alias)</td><td>Save plot as a named region</td><td></td></tr>
+<tr><td></td><td></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Cycle boundary faces</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Cycle interaction mode</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Cycle player visibility</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Open settings</td><td><code>#</code></td></tr>
+<tr><td></td><td></td><td>Set selection position 1</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Set selection position 2</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Toggle current plot region</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Toggle all block filters</td><td>Not Bound</td></tr>
+</tbody>
+</table>
 
 The default height limits are the client's configured minimum (`-64` initially) and `400`. A positive margin expands the plot; a negative one shrinks it. Temporary plot groups remain available through reconnects and dimension changes for the current Minecraft session.
 

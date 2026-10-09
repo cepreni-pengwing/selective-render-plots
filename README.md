@@ -8,22 +8,23 @@ Selective Render Plots is an optional server add-on for [Selective Render](https
 
 These are Selective Render client commands, not server commands. `/sr` is short for `/selectiverender`, `p` for `plot`, and `s` for `save`. No command below has its own dedicated key except the plot toggle and clear bindings noted here.
 
-| Alias | Expanded command | Purpose | Key |
-|---|---|---|---|
-| `/sr p` | <small>`plot [minY] [maxY] [xzMargin]`</small> | Add or remove the plot below you. | Not Bound |
-| `/sr p` | `plot clear` | Clear temporary plots. | Not Bound |
-| `/sr p` | <small>`plot save NAME [minY] [maxY] [xzMargin]` (`s` alias)</small> | Save plot as a named region. |  |
-|  |  | Clear temporary plots. | Not Bound |
-|  |  | Cycle boundary faces. | Not Bound |
-|  |  | Cycle interaction mode. | Not Bound |
-|  |  | Cycle player visibility. | Not Bound |
-|  |  | Open settings. | `#` |
-|  |  | Set selection position 1. | Not Bound |
-|  |  | Set selection position 2. | Not Bound |
-|  |  | Toggle current plot region. | Not Bound |
-|  |  | Toggle all block filters. | Not Bound |
-|  |  | Toggle hide group. | `F10` |
-|  |  | Toggle render group. | `F9` |
+<table>
+<thead><tr><th>Alias</th><th>Expanded command</th><th>Purpose</th><th>Key</th></tr></thead>
+<tbody>
+<tr><td rowspan="3"><code>/sr p</code></td><td><code>plot [minY] [maxY] [xzMargin]</code></td><td>Add or remove the plot below you</td><td>Not Bound</td></tr>
+<tr><td><code>plot clear</code></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
+<tr><td><code>plot save NAME [minY] [maxY] [xzMargin]</code> (<code>s</code> alias)</td><td>Save plot as a named region</td><td></td></tr>
+<tr><td></td><td></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Cycle boundary faces</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Cycle interaction mode</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Cycle player visibility</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Open settings</td><td><code>#</code></td></tr>
+<tr><td></td><td></td><td>Set selection position 1</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Set selection position 2</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Toggle current plot region</td><td>Not Bound</td></tr>
+<tr><td></td><td></td><td>Toggle all block filters</td><td>Not Bound</td></tr>
+</tbody>
+</table>
 
 Keybinds shown in the table are defaults. Omitted height limits use the client's configured minimum (default `-64`) and maximum `400`. A positive margin expands the plot horizontally; a negative margin shrinks it. A margin that would remove the entire plot is rejected. Use `/sr toggle` (`/sr t`) to switch the current render group off while collecting more plots, then on again when ready. Only the first plot added to an empty group enables isolation automatically.
 
