@@ -10,13 +10,13 @@ Install PlotSquared and the server file matching your platform and game version.
 
 Commands are entered in the player's Selective Render client, not on the server. `/sr` is short for `/selectiverender`; `p` means `plot` and `s` means `save`.
 
-| Short alias | Full command (without `/sr`) | Purpose | Keybind (default) |
+| Alias | Expanded command | Purpose | Key |
 |---|---|---|---|
-| `/sr p` | `plot [minY] [maxY] [xzMargin]` | Add or remove the plot beneath you, optionally setting height limits or margin. | `Backspace` |
-| `/sr p clear` | `plot clear` | Clear all temporary plots. | Unassigned |
-| `/sr p s` | `plot save NAME [minY] [maxY] [xzMargin]` | Save the plot as a regular named region. |  |
+| `/sr p` | <small>`plot [minY] [maxY] [xzMargin]`</small> | Add or remove the plot beneath you. | `Backspace` |
+| `/sr p` | `plot clear` | Clear temporary plots. | Unassigned |
+| `/sr p` | <small>`plot save NAME [minY] [maxY] [xzMargin]` (`s` alias)</small> | Save plot as a named region. |  |
 
-The default height limits are the client's configured minimum (`-64` initially) and `400`. A positive margin expands the plot; a negative one shrinks it. Temporary plot groups remain available through reconnects and dimension changes for the current Minecraft session.
+Keybinds shown in the table are defaults. The default height limits are the client's configured minimum (`-64` initially) and `400`. A positive margin expands the plot; a negative one shrinks it. Temporary plot groups remain available through reconnects and dimension changes for the current Minecraft session.
 
 ## Permissions
 
