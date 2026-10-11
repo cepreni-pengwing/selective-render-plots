@@ -20,7 +20,7 @@ Commands are entered in the player's Selective Render client, not on the server.
 </tbody>
 </table>
 
-The default height limits are the client's configured minimum (`-64` initially) and `400`. A positive margin expands the plot; a negative one shrinks it. Temporary plot groups remain available through reconnects and dimension changes for the current Minecraft session.
+The default height limits are the client's configured minimum and maximum (`-64` and `319` initially, inclusive). A positive margin expands the plot; a negative one shrinks it. Temporary plot groups remain available through reconnects and dimension changes for the current Minecraft session.
 
 ## Permissions
 

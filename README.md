@@ -20,7 +20,7 @@ These are Selective Render client commands, not server commands. `/sr` is short 
 </tbody>
 </table>
 
-Keybinds shown in the table are defaults. Omitted height limits use the client's configured minimum (default `-64`) and maximum `400`. A positive margin expands the plot horizontally; a negative margin shrinks it. A margin that would remove the entire plot is rejected. Use `/sr toggle` (`/sr t`) to switch the current render group off while collecting more plots, then on again when ready. Only the first plot added to an empty group enables isolation automatically.
+Keybinds shown in the table are defaults. Omitted height limits use the client's configured minimum and maximum (defaults `-64` and `319`, inclusive). A positive margin expands the plot horizontally; a negative margin shrinks it. A margin that would remove the entire plot is rejected. Use `/sr toggle` (`/sr t`) to switch the current render group off while collecting more plots, then on again when ready. Only the first plot added to an empty group enables isolation automatically.
 
 ## Installation
 
