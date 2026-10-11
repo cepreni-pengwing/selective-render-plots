@@ -6,21 +6,15 @@ Selective Render Plots is an optional server add-on for [Selective Render](https
 
 ## Commands and keybinds
 
-These are Selective Render client commands, not server commands. `/sr` is short for `/selectiverender`, `p` for `plot`, and `s` for `save`. No command below has its own dedicated key except the plot toggle and clear bindings noted here.
+These are Selective Render client commands, not server commands. `/sr` is short for `/selectiverender`, `p` for `plot`, and `s` for `save`. The plot toggle has an optional keybind. Clearing temporary plots is available as a command only.
 
 <table>
 <thead><tr><th>Alias</th><th>Expanded command</th><th>Purpose</th><th>Key</th></tr></thead>
 <tbody>
 <tr><td rowspan="3"><code>/sr p</code></td><td><code>plot [minY] [maxY] [xzMargin]</code></td><td>Add or remove the plot below you</td><td>Not Bound</td></tr>
-<tr><td><code>plot clear</code></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
+<tr><td><code>plot clear</code></td><td>Clear temporary plots</td><td></td></tr>
 <tr><td><code>plot save NAME [minY] [maxY] [xzMargin]</code> (<code>s</code> alias)</td><td>Save plot as a named region</td><td></td></tr>
-<tr><td></td><td></td><td>Clear temporary plots</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Cycle boundary faces</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Cycle interaction mode</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Cycle player visibility</td><td>Not Bound</td></tr>
 <tr><td></td><td></td><td>Open settings</td><td><code>#</code></td></tr>
-<tr><td></td><td></td><td>Set selection position 1</td><td>Not Bound</td></tr>
-<tr><td></td><td></td><td>Set selection position 2</td><td>Not Bound</td></tr>
 <tr><td></td><td></td><td>Toggle current plot region</td><td>Not Bound</td></tr>
 <tr><td></td><td></td><td>Toggle all block filters</td><td>Not Bound</td></tr>
 </tbody>
