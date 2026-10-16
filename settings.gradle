@@ -2,8 +2,21 @@ pluginManagement {
     repositories {
         maven { url = 'https://maven.fabricmc.net/' }
         gradlePluginPortal()
+        mavenCentral()
+    }
+    plugins {
+        id 'net.fabricmc.fabric-loom-remap' version '1.17.20'
     }
 }
 
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
 rootProject.name = 'selective-render-plots'
-include 'common', 'paper', 'fabric'
+
+include 'common', 'fabric'
+['1.20.1', '1.21.1'].each { version ->
+    include "paper-mc$version"
+    project(":paper-mc$version").projectDir = file("paper/mc$version")
+}

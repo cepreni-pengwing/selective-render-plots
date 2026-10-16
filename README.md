@@ -52,12 +52,12 @@ The add-on answers explicit requests from permitted clients with plot block boun
 
 ## Building and contributing
 
-Use JDK 21 and run:
+Run Gradle with Java 21 or newer:
 
 ```powershell
 .\gradlew.bat build
 ```
 
-The Paper and Fabric JARs are generated under their respective `build/libs` directories. See [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes. Contact: [pengwing.ac@gmail.com](mailto:pengwing.ac@gmail.com).
+This builds and tests every variant. The JARs are generated in `paper/mc1.20.1/build/libs`, `paper/mc1.21.1/build/libs` and `fabric/build/libs`. See [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes. Contact: [pengwing.ac@gmail.com](mailto:pengwing.ac@gmail.com).
 
 Licensed under GPL-3.0-only. PlotSquared is a separate runtime dependency and is not included in the distributed JARs. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
