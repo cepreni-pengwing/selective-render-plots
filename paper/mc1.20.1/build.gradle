@@ -1,0 +1,2 @@
+ext.targetMinecraftVersion = '1.20.1'
+apply from: rootProject.file('paper/paper.gradle')

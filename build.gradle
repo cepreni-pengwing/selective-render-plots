@@ -7,10 +7,12 @@ allprojects {
     version = providers.gradleProperty('addon_version').get()
 }
 
-tasks.named('assemble') {
-    dependsOn(':paper:assemble', ':fabric:assemble')
+subprojects {
+    plugins.withType(JavaPlugin).configureEach {
+        java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
-tasks.named('check') {
-    dependsOn(':paper:check', ':fabric:check')
-}
+def platforms = [':paper-mc1.20.1', ':paper-mc1.21.1', ':fabric']
+tasks.named('assemble') { dependsOn(platforms.collect { "$it:assemble" }) }
+tasks.named('check') { dependsOn(platforms.collect { "$it:check" } + ':common:check') }
